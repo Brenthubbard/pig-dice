@@ -1,0 +1,9 @@
+.jumbotron {
+  text-align: center;
+  font-size: 100px;
+  margin: auto;
+  padding: 30;
+  border:solid;
+  color: rgb(235, 60, 182);
+  background-color: antiquewhite;
+}

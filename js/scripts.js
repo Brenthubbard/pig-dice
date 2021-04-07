@@ -32,22 +32,39 @@ PlayerObject.prototype.rollDice = function () {
   } else {
     this.tempScore += currentRoll; //add if !one
     console.log(currentPlayer);
-    let myChoice = prompt("Would you like to roll again?")
-    if (myChoice) {
-      currentPlayer.rollDice();
-    } else {
-      console.log("called else");
-      this.totalScore += this.tempScore;
-      switchPlayer();
-    }
+
   }
 }
-
+//Ui Logic
 
 $(document).ready(function () {
   playerOne = new PlayerObject("playerOne");
   playerTwo = new PlayerObject("playerTwo");
   currentPlayer = playerOne;
-  console.log(currentPlayer);
   $("#CurrentPlayer").text(currentPlayer.playerName);
+
+  $("button#roll").click(function () {
+    $("#CurrentPlayer").text(currentPlayer.playerName);
+    currentPlayer.rollDice();
+  });
+
+  $("#hold").click(function () {
+    currentPlayer.totalScore += currentPlayer.tempScore;
+    if (currentPlayer.totalScore >= 100) {
+      alert(currentPlayer.playerName + " WON!");
+      location.reload();
+    }
+    switchPlayer();
+    $("#CurrentPlayer").text(currentPlayer.playerName);
+  });
 });
+ // let myChoice = prompt("Would you like to roll again?")
+    // if (myChoice === true) {
+    //   currentPlayer.rollDice();
+    // } else {
+    //   console.log("called else");
+    //   this.totalScore += this.tempScore;
+    //   switchPlayer();
+    // }
+
+    // All this functionality was moved to the buttons 
