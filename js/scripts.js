@@ -1,11 +1,11 @@
-function PlayerObject(playerName, totalScore, tempScore) {
+function PlayerObject(playerName) {
   this.playerName = playerName;
-  this.totalScore = totalScore;
-  this.tempScore = tempScore;
+  let totalScore = 0;
+  let tempScore = 0;
 }
 
 function switchPlayer() {
-  if (currentPlayer === playerOne) {
+  if (currentPlayer.playerName === "playerOne") {
     currentPlayer = playerTwo;
   } else {
     currentPlayer = playerOne;
@@ -17,13 +17,21 @@ function switchPlayer() {
 PlayerObject.prototype.rollDice = function () {
   let currentRoll = Math.floor(Math.random() * 6) + 1 //random number
   if (currentRoll === 1) { //return if 1
-    return totalScore;
+    switchPlayer();
   } else {
     this.tempScore += currentRoll; //add if !one
     let myChoice = prompt("Would you like to roll again?")
     if (myChoice) {
-      rolldice
+      currentPlayer.rollDice();
     } else {
-      totaSCore += tempScore;
-      playerSwitch;
+      this.totalScore += this.tempScore;
+      switchPlayer();
     }
+  }
+}
+
+$(document).ready(function () {
+  const playerOne = new PlayerObject("playerOne");
+  const playerTwo = new PlayerObject("playerTwo");
+  console.log("I'm running");
+});
