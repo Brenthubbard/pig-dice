@@ -26,16 +26,17 @@ function switchPlayer() {
 PlayerObject.prototype.rollDice = function () {
   let currentRoll = Math.floor(Math.random() * 6) + 1 //random number
   if (currentRoll === 1) { //return if 1
-    alert("You busted!");
     console.log("You busted!");
     switchPlayer();
+    $("#CurrentPlayer").text(currentPlayer.playerName);
   } else {
     this.tempScore += currentRoll; //add if !one
+    console.log(currentPlayer);
     let myChoice = prompt("Would you like to roll again?")
     if (myChoice) {
-      console.log(currentPlayer);
       currentPlayer.rollDice();
     } else {
+      console.log("called else");
       this.totalScore += this.tempScore;
       switchPlayer();
     }
@@ -48,4 +49,5 @@ $(document).ready(function () {
   playerTwo = new PlayerObject("playerTwo");
   currentPlayer = playerOne;
   console.log(currentPlayer);
+  $("#CurrentPlayer").text(currentPlayer.playerName);
 });
