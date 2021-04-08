@@ -7,14 +7,18 @@ function PlayerObject(playerName) {
   this.totalScore = 0;
   this.tempScore = 0;
 }
-//player1
+//playerOne
+//playerName = Player One
 //totalScore = 0
 //tempScore = 0
-//player2
+//playerTwo
+//playerName = Player Two
 //totalScore = 0
 //tempScore = 0
+
+
 function switchPlayer() {
-  if (currentPlayer.playerName === "playerOne") {
+  if (currentPlayer.playerName === "Player One") {
     currentPlayer = playerTwo;
   } else {
     currentPlayer = playerOne;
@@ -22,50 +26,59 @@ function switchPlayer() {
   currentPlayer.tempScore = 0;
 }
 
-//player1.rollDice()
 PlayerObject.prototype.rollDice = function () {
   let currentRoll = Math.floor(Math.random() * 6) + 1 //random number
   if (currentRoll === 1) { //return if 1
-    console.log("You turn is over!");
+    alert("You rolled a 1, your turn is over!");
     switchPlayer();
-    $("#CurrentPlayer").text(currentPlayer.playerName);
-    $(".score1").text(currentPlayer.totalScore);
-    $(".score2").text(currentPlayer.totalScore);
-    $("#tempScore").text(currentPlayer.totalScore);
+    $("#currentPlayer").text(currentPlayer.playerName);
+    // $(".score1").text(currentPlayer.totalScore);
+    // $(".score2").text(currentPlayer.totalScore);
+    // $("#tempScore").text(currentPlayer.totalScore);
   } else {
     this.tempScore += currentRoll; //add if !one
-    console.log(currentPlayer);
-
   }
 }
+   
+
 //Ui Logic
 
 $(document).ready(function () {
-  playerOne = new PlayerObject("playerOne");
-  playerTwo = new PlayerObject("playerTwo");
+  playerOne = new PlayerObject("Player One");
+  playerTwo = new PlayerObject("Player Two");
   currentPlayer = playerOne;
-  $("#CurrentPlayer").text(currentPlayer.playerName);
+  $("#currentPlayer").text(currentPlayer.playerName);
   $("#tempScore").text(currentPlayer.tempScore);
+  
 
   $("button#roll").click(function () {
-    $("#CurrentPlayer").text(currentPlayer.playerName);
+    $("#currentPlayer").text(currentPlayer.playerName);
     currentPlayer.rollDice();
-  
+    $("#tempScore").text(currentPlayer.tempScore);
   });
-
+  
   $("#hold").click(function () {
     currentPlayer.totalScore += currentPlayer.tempScore;
-    if (currentPlayer.totalScore >= 100) {
+    if (currentPlayer.playerName === "Player One") {
+      $(".score1").text(currentPlayer.totalScore);
+    }
+      else $(".score2").text(currentPlayer.totalScore)
+   
+      if (currentPlayer.totalScore >= 100) {
       alert(currentPlayer.playerName + " WON!");
       location.reload();
     }
     
     switchPlayer();
-    $("#CurrentPlayer").text(currentPlayer.playerName);
-    
-   
+    $("#currentPlayer").text(currentPlayer.playerName);
+    $("#tempScore").text(currentPlayer.tempScore);
   });
 });
+    
+   
+
+  
+
  // let myChoice = prompt("Would you like to roll again?")
     // if (myChoice === true) {
     //   currentPlayer.rollDice();

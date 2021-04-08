@@ -7,13 +7,16 @@
   color: rgb(235, 60, 182);
   background-color: antiquewhite;
 }
-.container {    
+#roundScore {    
   text-align: center;
   background-color: antiquewhite;
   color: rgb(235, 60, 182);
-  border-width: radius 3px; 
+  border-width: 15px; 
+  border-color: deeppink;
   padding: 2cm;
   margin-top: 20px;
+  border-radius: 50%;
+  border-style:double;
 
 } 
 button#roll {
@@ -40,12 +43,30 @@ h1 {
   text-align: center;
   color: blueviolet;
 }
-p {
-  text-align: center;
 
 
-}
-div {
+body {
   text-align: center;
   color: blueviolet;
+}
+#currentPlayer{
+  font-size: xx-large;
+}
+
+h1 {
+  text-decoration: underline; 
+  width: 45vw;
+  margin: auto;
+  margin-top: 15px;
+}
+
+.score2{
+  font-size: xx-large;
+}
+
+.score1{
+  font-size: xx-large;
+}
+body{
+  background-color: rgb(140, 233, 117);
 }
