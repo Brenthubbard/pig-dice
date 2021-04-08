@@ -26,9 +26,12 @@ function switchPlayer() {
 PlayerObject.prototype.rollDice = function () {
   let currentRoll = Math.floor(Math.random() * 6) + 1 //random number
   if (currentRoll === 1) { //return if 1
-    console.log("You busted!");
+    console.log("You turn is over!");
     switchPlayer();
     $("#CurrentPlayer").text(currentPlayer.playerName);
+    $(".score1").text(currentPlayer.totalScore);
+    $(".score2").text(currentPlayer.totalScore);
+    $("#tempScore").text(currentPlayer.totalScore);
   } else {
     this.tempScore += currentRoll; //add if !one
     console.log(currentPlayer);
@@ -42,10 +45,12 @@ $(document).ready(function () {
   playerTwo = new PlayerObject("playerTwo");
   currentPlayer = playerOne;
   $("#CurrentPlayer").text(currentPlayer.playerName);
+  $("#tempScore").text(currentPlayer.tempScore);
 
   $("button#roll").click(function () {
     $("#CurrentPlayer").text(currentPlayer.playerName);
     currentPlayer.rollDice();
+  
   });
 
   $("#hold").click(function () {
@@ -54,8 +59,11 @@ $(document).ready(function () {
       alert(currentPlayer.playerName + " WON!");
       location.reload();
     }
+    
     switchPlayer();
     $("#CurrentPlayer").text(currentPlayer.playerName);
+    
+   
   });
 });
  // let myChoice = prompt("Would you like to roll again?")

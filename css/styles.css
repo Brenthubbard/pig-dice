@@ -7,3 +7,45 @@
   color: rgb(235, 60, 182);
   background-color: antiquewhite;
 }
+.container {    
+  text-align: center;
+  background-color: antiquewhite;
+  color: rgb(235, 60, 182);
+  border-width: radius 3px; 
+  padding: 2cm;
+  margin-top: 20px;
+
+} 
+button#roll {
+  margin: auto;
+  width: 50vw;
+  margin-bottom: 10px;
+  text-align: center;
+  background-color: burlywood;
+  color: rgb(162, 88, 231);
+   box-shadow:0 8px 16px rgb(236, 64, 222) ;
+  display: block;
+}
+button#hold {
+  margin: auto;
+  width: 50vw;
+ text-align: center;
+  background-color: burlywood;
+  color: rgb(162, 88, 231);
+  box-shadow:0 8px 16px rgb(236, 64, 222) ;
+  display: block;
+  margin-top: 15px ;
+}
+h1 {
+  text-align: center;
+  color: blueviolet;
+}
+p {
+  text-align: center;
+
+
+}
+div {
+  text-align: center;
+  color: blueviolet;
+}
